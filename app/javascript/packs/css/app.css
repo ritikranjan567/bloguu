@@ -1,0 +1,118 @@
+@import url("materialize-css");
+
+.nav-padded{
+  padding: 0rem 0.7rem;
+}
+
+.user-initials{
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-top: 0.3rem;
+  margin-right: 1rem;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background-image: url('./pexels-pixabay-326240.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+header{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+footer{
+  border-top: 1px solid #afafaf;
+  width: 100%;
+  background-color: rgba(218, 215, 215, 0.507);
+  position: relative;
+  bottom: 0vh;
+  margin-top: 2rem;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.m-l-1rem{
+  margin-left: 1rem;
+}
+
+.m-b-0{
+  margin-bottom: 0;
+}
+
+.small-light{
+  font-size: 0.76rem;
+  color: #a0a0a0;
+}
+
+.m-t-center{
+  margin-top: 45vh;
+}
+
+
+.content-div{
+  text-align: justify;
+  height: 6rem;
+  display: block;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+#root{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app-container{
+  flex: 1;
+}
+
+.fit-to-screen{
+  height: 100%;
+  width: 100%;
+}
+
+.align-justified{
+  text-align: justify;
+}
+
+.mid-size-text{
+  font-size: 1.2rem;
+}
+
+.post-container{
+  padding: 1.4rem;
+  border-radius: 3rem;
+  margin-top: 0.4rem;
+}
+
+.score-container{
+  display: block;
+  color: coral;
+  margin-top: 0.5rem;
+}
+
+.score-text{
+  position: absolute;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+.show-date{
+  font-size: 1.2rem;
+  font-family: cursive;
+  color: rgb(241, 216, 165);
+}
