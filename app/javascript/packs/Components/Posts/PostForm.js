@@ -74,7 +74,7 @@ class PostForm extends React.Component{
 
 const mapStateToProps = (state) => ({
   post: state.postStore.post.attributes,
-  userId: state.user.id
+  userId: state.user.currentUser.id
 });
 
 const mapDispatchToProps = (dispatch) => ({

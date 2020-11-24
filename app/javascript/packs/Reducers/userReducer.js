@@ -1,15 +1,20 @@
-import { SET_USER, RESET_USER } from "../Actions/actionTypes"
+import { SET_CURRENT_USER, RESET_CURRENT_USER } from "../Actions/actionTypes"
 let user = localStorage.getItem('user')
-const initState = JSON.parse(user)
+const initState = {
+  currentUser: JSON.parse(user),
+  tempUser: {}
+}
 
 export const userReducer = (state = initState, action) => {
   switch(action.type){
-    case SET_USER:
+    case SET_CURRENT_USER:
       return {
-        ...action.user
+        ...state, currentUser: action.user
       }
-    case RESET_USER:
-      return null;
+    case RESET_CURRENT_USER:
+      return {
+        ...state, currentUser: null
+      }
     default:
       return state;
   }

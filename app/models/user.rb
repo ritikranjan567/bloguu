@@ -4,5 +4,5 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, confirmation: true, length: {minimum: 6}
+  validates :password, confirmation: true, length: {minimum: 6}, on: [:create]
 end

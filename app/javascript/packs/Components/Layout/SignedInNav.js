@@ -2,10 +2,10 @@ import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { alertSuccess } from '../../Actions/alertActions'
-import {resetUser} from '../../Actions/userActions'
+import {destroyUserSession} from '../../Actions/userActions'
 
 const SignedInNav = (props) => {
-  //console.log(props.user);
+
   return (
     <Fragment>
       <li className="sidenav-close">
@@ -18,19 +18,44 @@ const SignedInNav = (props) => {
         <Link to="/" className="waves-effect waves-light" onClick={() => handleLogout(props.alertSuccess, props.resetUser)} >Logout</Link>
       </li>
       <li>
-        <Link to="/" className="user-initials" >
-          <div className="circle pink lighten-2 center user-initials" >{userInitials(props.user.attributes)}</div>
-        </Link>
+          <div className="user-initials circle pink lighten-2 center user-initials dropdown-trigger" 
+            data-target="user-container" onClick={handleShowUser}>
+            {userInitials(props.user.attributes)}
+          </div>
       </li>
-
+      
+      <div className="card red darken-4 dropdown-content" id="user-container">
+        <div className="card-content">
+          <span className="card-title">
+            {props.user.attributes.first_name + " " + props.user.attributes.last_name}
+          </span>
+          <p className="email">{props.user.attributes.email}</p>
+        </div>
+        <div className="card-action">
+          <Link to="/edit-user" className="flex-content sidenav-close"><i className="material-icons">edit</i> &nbsp; Edit Profile</Link>
+          <Link to="/change-password" className="flex-content sidenav-close"><i className="material-icons">vpn_key</i> &nbsp; Change Password</Link>
+          <a path="#" className="flex-content sidenav-close" onClick={handleDeleteProfile}><i className="material-icons">delete</i>Delete Proflie</a>
+        </div>
+      </div>
       
     </Fragment>
   );
 }
 
+function handleShowUser(e){
+  let instance = M.Dropdown.init(e.target);
+  instance.recalculateDimensions();
+  instance.open();
+  //console.log(instance);
+}
+
 function handleLogout(alertSuccess, resetUser){
   resetUser();
   alertSuccess("You have been successfully logged out");
+}
+
+function handleDeleteProfile (){
+  console.log('delete profile');
 }
 
 function userInitials(user_attributes){
@@ -39,12 +64,12 @@ function userInitials(user_attributes){
 
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user.currentUser
 });
 
 const mapDispatchToProps = (dispatch) => ({
   alertSuccess: (message) => (dispatch(alertSuccess(message))),
-  resetUser: () => (dispatch(resetUser()))
+  resetUser: () => (dispatch(destroyUserSession()))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignedInNav);

@@ -18,9 +18,9 @@ export const SET_PAGINATION_LIMIT = 'set_pagination_limit';
 /* ------------------------------------------------------ */
 /* ---------- User action types ------------------------------ */
 export const CREATE_USER = 'create_user';
-export const SET_USER = 'set_user';
+export const SET_CURRENT_USER = 'set_current_user';
 export const UPDATE_USER = 'update_user';
-export const RESET_USER = 'reset_user';
+export const RESET_CURRENT_USER = 'reset_current_user';
 /* ------------------------------------------------------------- */
 /* ------------- comment actions -------------------------------- */
 export const SET_COMMENTS = 'set_comments';

@@ -11,12 +11,13 @@ import {store} from './Utils/store'
 import './css/app'
 import 'materialize-css'
 import {browseHistory} from './Utils/browseHistory'
+import ErrorBoundary from './Utils/ErrorBoundary'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
       <Router history={browseHistory}>
-        <App />
+        <ErrorBoundary><App /></ErrorBoundary> 
       </Router>
     </Provider>,
     document.getElementById("root"),

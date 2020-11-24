@@ -9,6 +9,7 @@
   height: 3.5rem;
   margin-top: 0.3rem;
   margin-right: 1rem;
+  margin-left: 2.1rem;
 }
 
 body{
@@ -115,4 +116,12 @@ footer{
   font-size: 1.2rem;
   font-family: cursive;
   color: rgb(241, 216, 165);
+}
+
+#user-container{
+  width: fit-content !important;
+}
+
+.flex-content{
+  display: flex;
 }

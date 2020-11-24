@@ -1,5 +1,5 @@
 import React from 'react'
-import { setUser } from '../../Actions/userActions'
+import { createUserSession } from '../../Actions/userActions'
 import { alertError } from '../../Actions/alertActions'
 import { connect } from 'react-redux'
 
@@ -52,11 +52,11 @@ class Login extends React.Component{
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user.currentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setUser: (data) => (dispatch(setUser(data))),
+  setUser: (data) => (dispatch(createUserSession(data))),
   alertError: (message) => (dispatch(alertError([message])))
 });
 

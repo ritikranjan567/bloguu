@@ -90,7 +90,7 @@ class SignUp extends React.Component{
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user.currentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({

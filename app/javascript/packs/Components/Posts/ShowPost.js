@@ -60,7 +60,7 @@ class ShowPost extends React.Component{
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user.currentUser,
   post: state.postStore.post,
   comments: state.commentStore.comments
 });

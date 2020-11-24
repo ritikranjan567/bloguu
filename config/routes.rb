@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:create, :show, :destroy, :update]
+      put "/update-user", to: "users#update"
+      delete "/delete-profile", to: "users#destroy"
+      put "/change-password", to: "users#change_password"
+      resources :users, only: [:create, :show]
       resources :posts, only: [:index, :show, :destroy, :update, :create]
       resources :sessions, only: [:create]
       resources :comments
