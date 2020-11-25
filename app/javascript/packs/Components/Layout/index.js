@@ -4,6 +4,8 @@ import SignedOutNav from './SignedOutNav'
 import Footer from './Footer'
 import Alert from './Alert'
 import NotFound from './NotFound'
+import ConfirmationModal from './ConfirmationModal'
+
 export {
   Header,
   SignedInNav,
@@ -11,4 +13,5 @@ export {
   Footer,
   Alert,
   NotFound,
+  ConfirmationModal
 }

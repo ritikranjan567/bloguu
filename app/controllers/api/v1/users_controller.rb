@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorize_request, only: [:update, :destory, :change_password]
+  before_action :authorize_request, only: [:update, :destroy, :change_password]
 
   def create
     @user = User.new(user_params)

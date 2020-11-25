@@ -25,3 +25,6 @@ export const RESET_CURRENT_USER = 'reset_current_user';
 /* ------------- comment actions -------------------------------- */
 export const SET_COMMENTS = 'set_comments';
 /* --------------------------------------------------------------- */
+/* -------------------- confirmation Modal actions -------------------*/
+export const CUSTOMIZE_CONFIRMATION_MODAL = 'customize_confirmation_modal';
+/* --------------------------------------------------------------------- */

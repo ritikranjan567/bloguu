@@ -1,13 +1,28 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { alertSuccess } from '../../Actions/alertActions'
-import {destroyUserSession} from '../../Actions/userActions'
+import {deleteUser, destroyUserSession} from '../../Actions/userActions'
+import { customizeConfirmationModal } from '../../Actions/confirmationModalActions'
 
 const SignedInNav = (props) => {
 
+  function handleDeleteProfile (){
+    props.customizeConfirmationModal('Are you sure to delete your profile?', 
+    'Yes, I am', "No, I ain't", onAgreement, onDisagreement);
+    let modalInstance = M.Modal.init(document.getElementById('confirmation-modal'), {opacity: 0, startingTop: '70%'});
+    modalInstance.open();
+  }
+
+  function onAgreement() {
+    props.deleteUser();
+  }
+
+  function onDisagreement() {
+    return;
+  }
   return (
-    <Fragment>
+    <div>
       <li className="sidenav-close">
         <Link className="btn waves-effect waves-light pulse" to="/create-post" >
           <i className="material-icons left">add</i>
@@ -34,11 +49,11 @@ const SignedInNav = (props) => {
         <div className="card-action">
           <Link to="/edit-user" className="flex-content sidenav-close"><i className="material-icons">edit</i> &nbsp; Edit Profile</Link>
           <Link to="/change-password" className="flex-content sidenav-close"><i className="material-icons">vpn_key</i> &nbsp; Change Password</Link>
-          <a path="#" className="flex-content sidenav-close" onClick={handleDeleteProfile}><i className="material-icons">delete</i>Delete Proflie</a>
+          <a href="#" data-target="confirmation-modal" className="flex-content sidenav-close modal-trigger" onClick={handleDeleteProfile}><i className="material-icons">delete</i>Delete Proflie</a>
         </div>
       </div>
       
-    </Fragment>
+    </div>
   );
 }
 
@@ -54,10 +69,6 @@ function handleLogout(alertSuccess, resetUser){
   alertSuccess("You have been successfully logged out");
 }
 
-function handleDeleteProfile (){
-  console.log('delete profile');
-}
-
 function userInitials(user_attributes){
   return (user_attributes) ? (user_attributes.first_name[0] + user_attributes.last_name[0]): null 
 }
@@ -69,7 +80,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   alertSuccess: (message) => (dispatch(alertSuccess(message))),
-  resetUser: () => (dispatch(destroyUserSession()))
+  resetUser: () => (dispatch(destroyUserSession())),
+  customizeConfirmationModal: (message, buttonAffermative, buttonNegative, onAgreement, onDisagreement) =>
+  (dispatch(customizeConfirmationModal(message, buttonAffermative, buttonNegative, onAgreement, onDisagreement))),
+  deleteUser: () => (dispatch(deleteUser())),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignedInNav);

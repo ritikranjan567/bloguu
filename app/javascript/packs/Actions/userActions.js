@@ -92,7 +92,7 @@ export const deleteUser = () => {
       headers: authHeader()
     }).then(res => {
       dispatch(destroyUserSession());
-      dispatch(alertSuccess('Profile was deleted successfully'));
+      dispatch(alertSuccess('Profile has been deleted successfully'));
     }, error => {
       dispatch(alertError([error.response.data.error]));
     });
